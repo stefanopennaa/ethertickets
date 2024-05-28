@@ -39,12 +39,12 @@
                 document.getElementById('nomeModal').innerText = nome;
                 document.getElementById('cognomeModal').innerHTML = cognome;
                 document.getElementById('emailModal').innerHTML = email;
-                // EmailJS, invio della mail di conferma
-                /* emailjs.init('txunfIbDrM9F1EVc1');
-                emailjs.send("service_fwc6ovb","template_8wsdc66",{
+                //EmailJS, invio della mail di conferma
+                emailjs.init('txunfIbDrM9F1EVc1');
+                emailjs.send("service_fwc6ovb", "template_8wsdc66", {
                     to_email: email,
                     to_name: nome,
-                }); */
+                });
             } else {
                 document.getElementById('buy').classList.add('d-none');
                 alert("Nome, cognome e indirizzo e-mail sono campi obbligatori!");
@@ -146,13 +146,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-5">
             <div class="modal-header">
-                <h5 class="modal-title m-auto">Conferma indirizzo email</i></h5>
+                <h5 class="modal-title m-auto">Hai vinto!</i></h5>
             </div>
             <div class="modal-body d-flex flex-column">
-                <p>Ciao <i id="nomeModal"></i> <i id="cognomeModal"></i>! Abbiamo inviato un'email di conferma a <strong
-                        id="emailModal"></strong>.</p>
+                <p>Ciao, <i id="nomeModal"></i> <i id="cognomeModal"></i>! <strong>Hai vinto!</strong> Abbiamo inviato un'email di conferma a <i
+                        id="emailModal"></i>.</p>
                 <p>Per favore, controlla la tua casella di posta elettronica e clicca sul link di conferma per
-                    completare l'acquisto.</p>
+                    riscattare il premio.</p>
                 <p>Se non hai ricevuto l'email, controlla la cartella dello spam.</p>
             </div>
         </div>
