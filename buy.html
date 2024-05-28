@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>ETHERTICKETS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+          integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+    <!-- Javascript -->
+    <script defer type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+    <script defer>
+        // aggiunta di eth al wallet
+        function onload() {
+            setTimeout(function () {
+                document.getElementById('eth').innerHTML = "0,014";
+                document.getElementById('btn').classList.remove("disabled");
+                const toastLiveExample = document.getElementById('liveToast');
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                toastBootstrap.show();
+            }, 5000);
+        }
+
+        function ticket() {
+            // recupero dati dell'utente
+            var nome = document.forms['form']['nome'].value;
+            var cognome = document.forms['form']['cognome'].value;
+            var email = document.forms['form']['email'].value;
+            // validate form
+            if (nome && cognome && email) {
+                document.getElementById('eth').innerHTML = "0,00";
+                document.getElementById('nomeModal').innerText = nome;
+                document.getElementById('cognomeModal').innerHTML = cognome;
+                document.getElementById('emailModal').innerHTML = email;
+                // EmailJS, invio della mail di conferma
+                /* emailjs.init('txunfIbDrM9F1EVc1');
+                emailjs.send("service_fwc6ovb","template_8wsdc66",{
+                    to_email: email,
+                    to_name: nome,
+                }); */
+            } else {
+                document.getElementById('buy').classList.add('d-none');
+                alert("Nome, cognome e indirizzo e-mail sono campi obbligatori!");
+                location.reload();
+            }
+        }
+    </script>
+
+</head>
+<body onload="onload()">
+
+<div class="container-fluid row m-0 p-0">
+
+    <h1 class="text-center text-white mt-5 mb-5" style="font-size: 6rem; text-shadow: 2px 2px 10px black"><strong>Nome
+        evento</strong></h1>
+
+    <div class="bg-light rounded-pill position-absolute p-3" style="width: 8.5rem; right: 5rem; top: 5.5rem">
+        <span><i class="bi bi-wallet"></i>&ensp;<i id="eth">0,00</i> ETH</span>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 start-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="img/avatar.png" class="rounded me-2" alt="Avatar" style="max-width: 2rem">
+                <strong class="me-auto">Hai ricevuto una ricarica!</strong>
+                <small>now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Goditi il concerto ;) - Elefante anonimo
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 col-12 d-flex flex-wrap justify-content-evenly">
+
+        <div class="card rounded-5 shadow" style="width: 30rem; height: 35rem">
+            <img src="img/event.jpg" class="card-img-top rounded-top-5" alt="Event Image">
+            <div class="card-body">
+                <h5 class="card-title">Nome Evento</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin libero nec
+                    lobortis vulputate. Donec eleifend, augue in consequat placerat, sem sapien vehicula odio, in
+                    maximus felis elit vitae mauris. In vestibulum turpis id lorem vestibulum finibus. Aliquam erat
+                    volutpat. Nulla rhoncus mauris id malesuada viverra. [...]</p>
+            </div>
+            <div class="card-footer">
+                <span><i class="bi bi-cash-stack"></i>&ensp;<b>Costo: </b>0,014 ETH</span>
+            </div>
+        </div>
+
+        <div class="card p-2 rounded-5 shadow mt-lg-0 mt-3" style="width: 30rem; height: 35rem">
+            <form name="form" action="javascript:void(0);" onsubmit="ticket()">
+                <div class="card-body">
+                    <h2 class="card-title mb-2 text-center">Acquista (0,014 ETH)</h2>
+                    <div class="mb-3">
+                        <label class="form-label">Nome (obbligatorio)</label>
+                        <input type="text" name="nome" class="form-control" placeholder="Mario">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cognome (obbligatorio)</label>
+                        <input type="text" name="cognome" class="form-control" placeholder="Rossi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Indirizzo e-mail (obbligatorio)</label>
+                        <input type="email" name="email" class="form-control" placeholder="esempio@esempio.it">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cellulare</label>
+                        <input type="tel" class="form-control" placeholder="+39 1234567890">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Indirizzo di spedizione</label>
+                        <input type="text" class="form-control" placeholder="Corso Duca degli Abruzzi, 24...">
+                    </div>
+                    <button type="button" id="btn" class="btn btn-primary w-100 rounded-pill disabled"
+                            data-bs-toggle="modal" data-bs-target="#buy" onclick="ticket()">
+                        <i class="bi bi-arrow-return-right"></i> Acquista
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="col-lg-2"></div>
+
+    <div class="d-flex justify-content-center mt-lg-5 mb-lg-0 my-5">
+        <a class="btn btn-light btn-block rounded-pill shadow" href="events.html">
+            <i class="bi bi-arrow-left"></i> Tutti gli eventi
+        </a>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="buy" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-5">
+            <div class="modal-header">
+                <h5 class="modal-title m-auto">Conferma indirizzo email</i></h5>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <p>Ciao <i id="nomeModal"></i> <i id="cognomeModal"></i>! Abbiamo inviato un'email di conferma a <strong
+                        id="emailModal"></strong>.</p>
+                <p>Per favore, controlla la tua casella di posta elettronica e clicca sul link di conferma per
+                    completare l'acquisto.</p>
+                <p>Se non hai ricevuto l'email, controlla la cartella dello spam.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
