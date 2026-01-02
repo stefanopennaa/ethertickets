@@ -14,8 +14,10 @@
           integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
     <!-- Javascript -->
+    <!-- EmailJS non più funzionante in modalità free
     <script defer type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+    -->
     <script defer>
         // aggiunta di eth al wallet
         function onload() {
@@ -40,11 +42,12 @@
                 document.getElementById('cognomeModal').innerHTML = cognome;
                 document.getElementById('emailModal').innerHTML = email;
                 //EmailJS, invio della mail di conferma
-                emailjs.init('txunfIbDrM9F1EVc1');
+                /* EmailJS non più funzionante in modalità free
+                emailjs.init('public_key_here');
                 emailjs.send("service_fwc6ovb", "template_8wsdc66", {
                     to_email: email,
                     to_name: nome,
-                });
+                }); */
             } else {
                 document.getElementById('buy').classList.add('d-none');
                 alert("Nome, cognome e indirizzo e-mail sono campi obbligatori!");
